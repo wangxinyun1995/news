@@ -38,5 +38,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker',                   '1.7.3'  # 假数据
 # 分页
 gem 'kaminari', '1.1.1'
-
-gem "mina"
