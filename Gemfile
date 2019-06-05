@@ -30,7 +30,7 @@ group :development do
 
   # 对`passenger`与`rbenv`的支持
   gem 'capistrano-passenger'
-  gem 'capistrano-rbenv'
+  gem 'capistrano-rvm'
 end
 
 group :test do
