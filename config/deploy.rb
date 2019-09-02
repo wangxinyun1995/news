@@ -5,14 +5,14 @@
 
 lock "~> 3.11.0"
 
-set :application, "lab"
-set :repo_url, "git@github.com:yangfeng199555/lab.git"
+set :application, "news"
+set :repo_url, "git@github.com:yangfeng199555/news.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/deploy/lab"
+set :deploy_to, "/home/deploy/news"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
