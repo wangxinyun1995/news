@@ -1,4 +1,4 @@
-<div class="center jumbotron">
+<!-- <div class="center jumbotron">
   <h1>欢迎来到,不知道写什么slogan</h1>
 
   <h2>
@@ -6,4 +6,42 @@
   </h2>
 
   <%= link_to "立即注册", signup_path, class: "btn btn-lg btn-primary" %>
+</div> -->
+<select name="person[person_type]" style="margin-top: 80px;" id="select_resource" οnchange="select()">
+  <option value="weibo">微博</option>
+  <option value="zhihu">知乎</option>
+</select>
+<div class="list-group" style="margin-top: 80px;" id="list_resource">
+  <% News.all.each do |news| %>
+    <a href="<%= news.origin_url %>" class="list-group-item " target="_blank">
+      <%= news.resource %>
+      <%= news.title %>
+      <%= news.no %>
+      <%= news.hot %>
+      <%= news.description %>
+      <% if news.image_url.present? %>
+        <%= link_to image_tag(news.image_url, width: '200px', height: '200px'), news.image_url  %>
+      <% end %>
+    </a>
+  <% end %>
 </div>
+<script type="text/javascript">
+
+$("#select_resource").change(function(){
+    var re = $("#select_resource").val();
+    console.log(re)
+    $.ajax({
+      type: "get",
+      cache: false,
+      url: "/home_resource?resource=" + re,
+      dataType: 'html',
+      success: function(data){
+        $('#list_resource').html(data);
+      },
+      error: function(XMLHttpResponse) {
+        $("#list_resource").html("获取失败,请重试!");
+      },
+    });
+});
+
+</script>
