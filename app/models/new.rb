@@ -1,4 +1,4 @@
-class News < ApplicationRecord
+class New < ApplicationRecord
 	def self.snatch_weibo
 		url = 'https://s.weibo.com/top/summary?cate=realtimehot'
 		html_doc = RestClient.get(url)
@@ -9,7 +9,7 @@ class News < ApplicationRecord
 			data = row.css('td').map(&:text)
 			next if data.blank?
 			url = 'https://s.weibo.com/' + row.css('.td-02 a').attribute('href').value
-			h = News.find_or_initialize_by(
+			h = New.find_or_initialize_by(
 																			 resource: 'weibo',
 																			 no: data[0],
 																			 title: row.css('.td-02 a').text,
@@ -36,7 +36,7 @@ class News < ApplicationRecord
 		table = doc.css('section')
 		table.each do |row|
 			next if row.blank?
-			h = News.find_or_initialize_by(resource: 'zhihu',
+			h = New.find_or_initialize_by(resource: 'zhihu',
 																		 no: row.css('.HotItem-rank').text,
 																		 title: row.css('.HotItem-content a').attribute('title').value,
 																		 origin_url: row.css('.HotItem-content a').attribute('href').value,

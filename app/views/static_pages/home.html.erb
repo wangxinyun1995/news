@@ -12,7 +12,7 @@
   <option value="zhihu">知乎</option>
 </select>
 <div class="list-group" style="margin-top: 80px;" id="list_resource">
-  <% News.all.each do |news| %>
+  <% New.all.each do |news| %>
     <a href="<%= news.origin_url %>" class="list-group-item " target="_blank">
       <%= news.resource %>
       <%= news.title %>
