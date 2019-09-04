@@ -25,7 +25,7 @@ class New < ApplicationRecord
 	end
 
 	def self.snatch_zhihu
-		cookie = 'd_c0="AAAjNL6rqQ2PTiNRRfDuo-5rXK8Kr9xlMoU=|1527504718"; _zap=b50dddb3-d32d-4a33-bbd1-78e43ff1dfcb; _xsrf=jOECpGcQURi29kktYbCLNWueTMlOcMaw; __gads=ID=60398a04d5756724:T=1543572435:S=ALNI_MbdsYXsx8MKGhgw2OsMGGrXfhqgBw; __utma=51854390.2101595817.1560411061.1560411061.1560411061.1; __utmz=51854390.1560411061.1.1.utmcsr=zhihu.com|utmccn=(referral)|utmcmd=referral|utmcct=/; __utmv=51854390.100-1|2=registration_date=20140319=1^3=entry_date=20140319=1; capsion_ticket="2|1:0|10:1567134353|14:capsion_ticket|44:ZGVjMjdiMWRkOTNlNGFmN2E1NTRlY2FmMDA1NDUxOWQ=|93956ceb4ce9077bba0a075e65198bd04d3b5c2e563a17211f5bbdbd706eade0"; l_n_c=1; r_cap_id="ZGFmZTEzNGI1MDZiNGNjM2IyOTM5ZWYxN2ZiNDU2MDI=|1567134361|6f6d298ab73606a22c55ea88a0a25bf61fc90c8b"; cap_id="ODNkYWZjZWM1ZGMxNDgyMGE2YTIzMzQ3MjQ1MTcwNjg=|1567134361|093f0e5b6ea644266dee1f29252a9d5706ced020"; l_cap_id="YmIzMGZkYjFkZGFjNDUyODgxNmZiZTllNDY3MzU4YzY=|1567134361|3860016a6b76a86f9e73f60551a6f560f7e924f8"; n_c=1; z_c0=Mi4xX3ZOQkFBQUFBQUFBQUNNMHZxdXBEUmNBQUFCaEFsVk5wT0JWWGdDRGc3VDdLRjRzM1gzcl9pcnlORkV6dHR3QWV3|1567134372|72db55e79bcb77cedc7d2c3b530bba1d3dca5ebb; tshl=; tst=h; q_c1=84130694e21e44e782006924e7f478ff|1567254451000|1558430927000; tgw_l7_route=f2979fdd289e2265b2f12e4f4a478330'
+		cookie = Setting.zhihu_cookie
 		url = 'https://www.zhihu.com/hot'
 		headers={
               'Cookie': cookie,
