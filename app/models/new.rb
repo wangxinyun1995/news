@@ -34,13 +34,16 @@ class New < ApplicationRecord
 		html_doc = RestClient.get(url, headers=headers)
 		doc = Nokogiri::HTML(html_doc, nil, 'UTF-8')
 		table = doc.css('section')
+
 		table.each do |row|
 			next if row.blank?
+			hot = row.css('.HotItem-content .HotItem-metrics').map(&:text).join().chomp("分享")
+			hot = hot.include?('有奖问答') ? '有奖问答' : hot
 			h = New.find_or_initialize_by(resource: 'zhihu',
 																		 no: row.css('.HotItem-rank').text,
 																		 title: row.css('.HotItem-content a').attribute('title').value,
 																		 origin_url: row.css('.HotItem-content a').attribute('href').value,
-																	 	 hot: row.css('.HotItem-content .HotItem-metrics').map(&:text).join().chomp("分享"),
+																	 	 hot: hot,
 																		 description: row.css('.HotItem-content a p').text,
 																		 image_url: row.css('a img').present? ? row.css('a img').attribute('src').value : ''
 																	 )
