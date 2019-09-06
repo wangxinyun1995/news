@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   resources :users
+
+  mount Test => '/api'
+  if Rails.env.development?
+    mount GrapeSwaggerRails::Engine => '/apidoc'
+  end
+
 end

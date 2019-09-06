@@ -63,3 +63,10 @@ gem 'pry-byebug'
 gem 'migration_comments', '0.4.1'
 
 gem "rails-settings-cached", "0.7.2"
+
+gem 'grape'
+
+group :development do
+  gem 'grape-swagger'
+  gem 'grape-swagger-rails'
+end
