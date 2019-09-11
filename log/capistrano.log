@@ -1,0 +1,310 @@
+# Logfile created on 2019-09-06 17:15:44 +0800 by logger.rb/53141
+  INFO ---------------------------------------------------------------------------
+  INFO START 2019-09-06 17:15:44 +0800 cap production deploy
+  INFO ---------------------------------------------------------------------------
+ DEBUG [8e5c23a3] Running /usr/bin/env which passenger as deploy@47.103.90.59
+ DEBUG [8e5c23a3] Command: /usr/bin/env which passenger
+ DEBUG [8e5c23a3] 	/usr/bin/passenger
+ DEBUG [8e5c23a3] Finished in 0.691 seconds with exit status 0 (successful).
+ DEBUG [9a8e9928] Running [ -d ~/.rvm ] as deploy@47.103.90.59
+ DEBUG [9a8e9928] Command: [ -d ~/.rvm ]
+ DEBUG [9a8e9928] Finished in 0.166 seconds with exit status 0 (successful).
+ DEBUG [d2dc65b0] Running ~/.rvm/bin/rvm version as deploy@47.103.90.59
+ DEBUG [d2dc65b0] Command: ~/.rvm/bin/rvm version
+ DEBUG [d2dc65b0] 	rvm 1.29.9-next (master) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]
+ DEBUG [d2dc65b0] Finished in 0.489 seconds with exit status 0 (successful).
+ DEBUG [26d4e640] Running ~/.rvm/bin/rvm current as deploy@47.103.90.59
+ DEBUG [26d4e640] Command: ~/.rvm/bin/rvm current
+ DEBUG [26d4e640] 	ruby-2.3.1
+ DEBUG [26d4e640] Finished in 0.481 seconds with exit status 0 (successful).
+ DEBUG [0fe8392c] Running ~/.rvm/bin/rvm default do ruby --version as deploy@47.103.90.59
+ DEBUG [0fe8392c] Command: ~/.rvm/bin/rvm default do ruby --version
+ DEBUG [0fe8392c] 	ruby 2.3.1p112 (2016-04-26 revision 54768) [x86_64-linux]
+ DEBUG [0fe8392c] Finished in 0.438 seconds with exit status 0 (successful).
+  INFO [12593565] Running /usr/bin/env mkdir -p /tmp as deploy@47.103.90.59
+ DEBUG [12593565] Command: /usr/bin/env mkdir -p /tmp
+  INFO [12593565] Finished in 0.161 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-news-production-w.sh 0.0%
+  INFO Uploading /tmp/git-ssh-news-production-w.sh 100.0%
+  INFO [30b4842a] Running /usr/bin/env chmod 700 /tmp/git-ssh-news-production-w.sh as deploy@47.103.90.59
+ DEBUG [30b4842a] Command: /usr/bin/env chmod 700 /tmp/git-ssh-news-production-w.sh
+  INFO [30b4842a] Finished in 0.166 seconds with exit status 0 (successful).
+  INFO [cd51fc2f] Running /usr/bin/env git ls-remote git@github.com:yangfeng199555/news.git HEAD as deploy@47.103.90.59
+ DEBUG [cd51fc2f] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-news-production-w.sh" ; /usr/bin/env git ls-remote git@github.com:yangfeng199555/news.git HEAD )
+ DEBUG [cd51fc2f] 	6fbbaf18deaf4962de4c1cb66e180c91d0f55b9b	HEAD
+  INFO [cd51fc2f] Finished in 3.526 seconds with exit status 0 (successful).
+  INFO [18f225b8] Running /usr/bin/env mkdir -p /home/deploy/news/shared /home/deploy/news/releases as deploy@47.103.90.59
+ DEBUG [18f225b8] Command: /usr/bin/env mkdir -p /home/deploy/news/shared /home/deploy/news/releases
+  INFO [18f225b8] Finished in 0.125 seconds with exit status 0 (successful).
+  INFO [aa631aad] Running /usr/bin/env mkdir -p /home/deploy/news/shared/log /home/deploy/news/shared/tmp/pids /home/deploy/news/shared/tmp/cache /home/deploy/news/shared/tmp/sockets /home/deploy/news/shared/public/system /home/deploy/news/shared/public/assets as deploy@47.103.90.59
+ DEBUG [aa631aad] Command: /usr/bin/env mkdir -p /home/deploy/news/shared/log /home/deploy/news/shared/tmp/pids /home/deploy/news/shared/tmp/cache /home/deploy/news/shared/tmp/sockets /home/deploy/news/shared/public/system /home/deploy/news/shared/public/assets
+  INFO [aa631aad] Finished in 0.166 seconds with exit status 0 (successful).
+  INFO [0c9148e5] Running /usr/bin/env mkdir -p /home/deploy/news/shared/config as deploy@47.103.90.59
+ DEBUG [0c9148e5] Command: /usr/bin/env mkdir -p /home/deploy/news/shared/config
+  INFO [0c9148e5] Finished in 0.166 seconds with exit status 0 (successful).
+ DEBUG [6a6a8817] Running [ -f /home/deploy/news/shared/config/database.yml ] as deploy@47.103.90.59
+ DEBUG [6a6a8817] Command: [ -f /home/deploy/news/shared/config/database.yml ]
+ DEBUG [6a6a8817] Finished in 0.165 seconds with exit status 0 (successful).
+ DEBUG [eb7840ad] Running [ -f /home/deploy/news/shared/config/secrets.yml ] as deploy@47.103.90.59
+ DEBUG [eb7840ad] Command: [ -f /home/deploy/news/shared/config/secrets.yml ]
+ DEBUG [eb7840ad] Finished in 0.166 seconds with exit status 0 (successful).
+ DEBUG [12f01a4e] Running [ -f /home/deploy/news/current/REVISION ] as deploy@47.103.90.59
+ DEBUG [12f01a4e] Command: [ -f /home/deploy/news/current/REVISION ]
+ DEBUG [12f01a4e] Finished in 0.164 seconds with exit status 0 (successful).
+ DEBUG [791ced54] Running /usr/bin/env cat /home/deploy/news/current/REVISION 2>/dev/null as deploy@47.103.90.59
+ DEBUG [791ced54] Command: /usr/bin/env cat /home/deploy/news/current/REVISION 2>/dev/null
+ DEBUG [791ced54] 	d12d342cf93ba89dcfe565d5a0bf62734404b07f
+ DEBUG [791ced54] Finished in 0.166 seconds with exit status 0 (successful).
+ DEBUG [2d523ffb] Running [ -f /home/deploy/news/repo/HEAD ] as deploy@47.103.90.59
+ DEBUG [2d523ffb] Command: [ -f /home/deploy/news/repo/HEAD ]
+ DEBUG [2d523ffb] Finished in 0.155 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/deploy/news/repo
+ DEBUG [d42dc49e] Running if test ! -d /home/deploy/news/repo; then echo "Directory does not exist '/home/deploy/news/repo'" 1>&2; false; fi as deploy@47.103.90.59
+ DEBUG [d42dc49e] Command: if test ! -d /home/deploy/news/repo; then echo "Directory does not exist '/home/deploy/news/repo'" 1>&2; false; fi
+ DEBUG [d42dc49e] Finished in 0.163 seconds with exit status 0 (successful).
+  INFO [16aefe49] Running /usr/bin/env git remote set-url origin git@github.com:yangfeng199555/news.git as deploy@47.103.90.59
+ DEBUG [16aefe49] Command: cd /home/deploy/news/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-news-production-w.sh" ; /usr/bin/env git remote set-url origin git@github.com:yangfeng199555/news.git )
+  INFO [16aefe49] Finished in 0.165 seconds with exit status 0 (successful).
+  INFO [33ac96b8] Running /usr/bin/env git remote update --prune as deploy@47.103.90.59
+ DEBUG [33ac96b8] Command: cd /home/deploy/news/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-news-production-w.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [33ac96b8] 	Fetching origin
+ DEBUG [33ac96b8] 	From github.com:yangfeng199555/news
+ DEBUG [33ac96b8] 	   d12d342..6fbbaf1  master     -> master
+  INFO [33ac96b8] Finished in 3.747 seconds with exit status 0 (successful).
+ DEBUG [68540011] Running if test ! -d /home/deploy/news/repo; then echo "Directory does not exist '/home/deploy/news/repo'" 1>&2; false; fi as deploy@47.103.90.59
+ DEBUG [68540011] Command: if test ! -d /home/deploy/news/repo; then echo "Directory does not exist '/home/deploy/news/repo'" 1>&2; false; fi
+ DEBUG [68540011] Finished in 0.112 seconds with exit status 0 (successful).
+  INFO [3fdfcce6] Running /usr/bin/env mkdir -p /home/deploy/news/releases/20190906091552 as deploy@47.103.90.59
+ DEBUG [3fdfcce6] Command: cd /home/deploy/news/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-news-production-w.sh" ; /usr/bin/env mkdir -p /home/deploy/news/releases/20190906091552 )
+  INFO [3fdfcce6] Finished in 0.167 seconds with exit status 0 (successful).
+  INFO [f7a3da0c] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /home/deploy/news/releases/20190906091552 as deploy@47.103.90.59
+ DEBUG [f7a3da0c] Command: cd /home/deploy/news/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-news-production-w.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /home/deploy/news/releases/20190906091552 )
+  INFO [f7a3da0c] Finished in 0.191 seconds with exit status 0 (successful).
+ DEBUG [0c90219c] Running if test ! -d /home/deploy/news/repo; then echo "Directory does not exist '/home/deploy/news/repo'" 1>&2; false; fi as deploy@47.103.90.59
+ DEBUG [0c90219c] Command: if test ! -d /home/deploy/news/repo; then echo "Directory does not exist '/home/deploy/news/repo'" 1>&2; false; fi
+ DEBUG [0c90219c] Finished in 0.167 seconds with exit status 0 (successful).
+ DEBUG [f1fc44d8] Running /usr/bin/env git rev-list --max-count=1 master as deploy@47.103.90.59
+ DEBUG [f1fc44d8] Command: cd /home/deploy/news/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-news-production-w.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [f1fc44d8] 	6fbbaf18deaf4962de4c1cb66e180c91d0f55b9b
+ DEBUG [f1fc44d8] Finished in 0.167 seconds with exit status 0 (successful).
+ DEBUG [2065edb6] Running if test ! -d /home/deploy/news/releases/20190906091552; then echo "Directory does not exist '/home/deploy/news/releases/20190906091552'" 1>&2; false; fi as deploy@47.103.90.59
+ DEBUG [2065edb6] Command: if test ! -d /home/deploy/news/releases/20190906091552; then echo "Directory does not exist '/home/deploy/news/releases/20190906091552'" 1>&2; false; fi
+ DEBUG [2065edb6] Finished in 0.166 seconds with exit status 0 (successful).
+  INFO [1f2ebbe8] Running /usr/bin/env echo "6fbbaf18deaf4962de4c1cb66e180c91d0f55b9b" > REVISION as deploy@47.103.90.59
+ DEBUG [1f2ebbe8] Command: cd /home/deploy/news/releases/20190906091552 && /usr/bin/env echo "6fbbaf18deaf4962de4c1cb66e180c91d0f55b9b" > REVISION
+  INFO [1f2ebbe8] Finished in 0.163 seconds with exit status 0 (successful).
+  INFO [c7db75f4] Running /usr/bin/env mkdir -p /home/deploy/news/releases/20190906091552/config as deploy@47.103.90.59
+ DEBUG [c7db75f4] Command: /usr/bin/env mkdir -p /home/deploy/news/releases/20190906091552/config
+  INFO [c7db75f4] Finished in 0.168 seconds with exit status 0 (successful).
+ DEBUG [70fc4d7c] Running [ -L /home/deploy/news/releases/20190906091552/config/database.yml ] as deploy@47.103.90.59
+ DEBUG [70fc4d7c] Command: [ -L /home/deploy/news/releases/20190906091552/config/database.yml ]
+ DEBUG [70fc4d7c] Finished in 0.165 seconds with exit status 1 (failed).
+ DEBUG [b1ca83a7] Running [ -f /home/deploy/news/releases/20190906091552/config/database.yml ] as deploy@47.103.90.59
+ DEBUG [b1ca83a7] Command: [ -f /home/deploy/news/releases/20190906091552/config/database.yml ]
+ DEBUG [b1ca83a7] Finished in 0.165 seconds with exit status 0 (successful).
+  INFO [8ab680a5] Running /usr/bin/env rm /home/deploy/news/releases/20190906091552/config/database.yml as deploy@47.103.90.59
+ DEBUG [8ab680a5] Command: /usr/bin/env rm /home/deploy/news/releases/20190906091552/config/database.yml
+  INFO [8ab680a5] Finished in 0.167 seconds with exit status 0 (successful).
+  INFO [ffc9c207] Running /usr/bin/env ln -s /home/deploy/news/shared/config/database.yml /home/deploy/news/releases/20190906091552/config/database.yml as deploy@47.103.90.59
+ DEBUG [ffc9c207] Command: /usr/bin/env ln -s /home/deploy/news/shared/config/database.yml /home/deploy/news/releases/20190906091552/config/database.yml
+  INFO [ffc9c207] Finished in 0.163 seconds with exit status 0 (successful).
+ DEBUG [60b124f6] Running [ -L /home/deploy/news/releases/20190906091552/config/secrets.yml ] as deploy@47.103.90.59
+ DEBUG [60b124f6] Command: [ -L /home/deploy/news/releases/20190906091552/config/secrets.yml ]
+ DEBUG [60b124f6] Finished in 0.162 seconds with exit status 1 (failed).
+ DEBUG [d7e542d0] Running [ -f /home/deploy/news/releases/20190906091552/config/secrets.yml ] as deploy@47.103.90.59
+ DEBUG [d7e542d0] Command: [ -f /home/deploy/news/releases/20190906091552/config/secrets.yml ]
+ DEBUG [d7e542d0] Finished in 0.166 seconds with exit status 0 (successful).
+  INFO [5ae975f3] Running /usr/bin/env rm /home/deploy/news/releases/20190906091552/config/secrets.yml as deploy@47.103.90.59
+ DEBUG [5ae975f3] Command: /usr/bin/env rm /home/deploy/news/releases/20190906091552/config/secrets.yml
+  INFO [5ae975f3] Finished in 0.166 seconds with exit status 0 (successful).
+  INFO [9efffe80] Running /usr/bin/env ln -s /home/deploy/news/shared/config/secrets.yml /home/deploy/news/releases/20190906091552/config/secrets.yml as deploy@47.103.90.59
+ DEBUG [9efffe80] Command: /usr/bin/env ln -s /home/deploy/news/shared/config/secrets.yml /home/deploy/news/releases/20190906091552/config/secrets.yml
+  INFO [9efffe80] Finished in 0.164 seconds with exit status 0 (successful).
+  INFO [cf4377cb] Running /usr/bin/env mkdir -p /home/deploy/news/releases/20190906091552 /home/deploy/news/releases/20190906091552/tmp /home/deploy/news/releases/20190906091552/public as deploy@47.103.90.59
+ DEBUG [cf4377cb] Command: /usr/bin/env mkdir -p /home/deploy/news/releases/20190906091552 /home/deploy/news/releases/20190906091552/tmp /home/deploy/news/releases/20190906091552/public
+  INFO [cf4377cb] Finished in 0.146 seconds with exit status 0 (successful).
+ DEBUG [a0c63d8e] Running [ -L /home/deploy/news/releases/20190906091552/log ] as deploy@47.103.90.59
+ DEBUG [a0c63d8e] Command: [ -L /home/deploy/news/releases/20190906091552/log ]
+ DEBUG [a0c63d8e] Finished in 0.162 seconds with exit status 1 (failed).
+ DEBUG [4c696aba] Running [ -d /home/deploy/news/releases/20190906091552/log ] as deploy@47.103.90.59
+ DEBUG [4c696aba] Command: [ -d /home/deploy/news/releases/20190906091552/log ]
+ DEBUG [4c696aba] Finished in 0.170 seconds with exit status 0 (successful).
+  INFO [101cedfd] Running /usr/bin/env rm -rf /home/deploy/news/releases/20190906091552/log as deploy@47.103.90.59
+ DEBUG [101cedfd] Command: /usr/bin/env rm -rf /home/deploy/news/releases/20190906091552/log
+  INFO [101cedfd] Finished in 0.168 seconds with exit status 0 (successful).
+  INFO [c9293dce] Running /usr/bin/env ln -s /home/deploy/news/shared/log /home/deploy/news/releases/20190906091552/log as deploy@47.103.90.59
+ DEBUG [c9293dce] Command: /usr/bin/env ln -s /home/deploy/news/shared/log /home/deploy/news/releases/20190906091552/log
+  INFO [c9293dce] Finished in 0.168 seconds with exit status 0 (successful).
+ DEBUG [76c8234b] Running [ -L /home/deploy/news/releases/20190906091552/tmp/pids ] as deploy@47.103.90.59
+ DEBUG [76c8234b] Command: [ -L /home/deploy/news/releases/20190906091552/tmp/pids ]
+ DEBUG [76c8234b] Finished in 0.162 seconds with exit status 1 (failed).
+ DEBUG [ad0a4ed6] Running [ -d /home/deploy/news/releases/20190906091552/tmp/pids ] as deploy@47.103.90.59
+ DEBUG [ad0a4ed6] Command: [ -d /home/deploy/news/releases/20190906091552/tmp/pids ]
+ DEBUG [ad0a4ed6] Finished in 0.168 seconds with exit status 1 (failed).
+  INFO [4e061e73] Running /usr/bin/env ln -s /home/deploy/news/shared/tmp/pids /home/deploy/news/releases/20190906091552/tmp/pids as deploy@47.103.90.59
+ DEBUG [4e061e73] Command: /usr/bin/env ln -s /home/deploy/news/shared/tmp/pids /home/deploy/news/releases/20190906091552/tmp/pids
+  INFO [4e061e73] Finished in 0.168 seconds with exit status 0 (successful).
+ DEBUG [16b1e03b] Running [ -L /home/deploy/news/releases/20190906091552/tmp/cache ] as deploy@47.103.90.59
+ DEBUG [16b1e03b] Command: [ -L /home/deploy/news/releases/20190906091552/tmp/cache ]
+ DEBUG [16b1e03b] Finished in 0.169 seconds with exit status 1 (failed).
+ DEBUG [a46c3ddc] Running [ -d /home/deploy/news/releases/20190906091552/tmp/cache ] as deploy@47.103.90.59
+ DEBUG [a46c3ddc] Command: [ -d /home/deploy/news/releases/20190906091552/tmp/cache ]
+ DEBUG [a46c3ddc] Finished in 0.168 seconds with exit status 1 (failed).
+  INFO [a47319cd] Running /usr/bin/env ln -s /home/deploy/news/shared/tmp/cache /home/deploy/news/releases/20190906091552/tmp/cache as deploy@47.103.90.59
+ DEBUG [a47319cd] Command: /usr/bin/env ln -s /home/deploy/news/shared/tmp/cache /home/deploy/news/releases/20190906091552/tmp/cache
+  INFO [a47319cd] Finished in 0.166 seconds with exit status 0 (successful).
+ DEBUG [3a12c5c1] Running [ -L /home/deploy/news/releases/20190906091552/tmp/sockets ] as deploy@47.103.90.59
+ DEBUG [3a12c5c1] Command: [ -L /home/deploy/news/releases/20190906091552/tmp/sockets ]
+ DEBUG [3a12c5c1] Finished in 0.164 seconds with exit status 1 (failed).
+ DEBUG [90c08e48] Running [ -d /home/deploy/news/releases/20190906091552/tmp/sockets ] as deploy@47.103.90.59
+ DEBUG [90c08e48] Command: [ -d /home/deploy/news/releases/20190906091552/tmp/sockets ]
+ DEBUG [90c08e48] Finished in 0.163 seconds with exit status 1 (failed).
+  INFO [ddb2fc60] Running /usr/bin/env ln -s /home/deploy/news/shared/tmp/sockets /home/deploy/news/releases/20190906091552/tmp/sockets as deploy@47.103.90.59
+ DEBUG [ddb2fc60] Command: /usr/bin/env ln -s /home/deploy/news/shared/tmp/sockets /home/deploy/news/releases/20190906091552/tmp/sockets
+  INFO [ddb2fc60] Finished in 0.163 seconds with exit status 0 (successful).
+ DEBUG [c24d869b] Running [ -L /home/deploy/news/releases/20190906091552/public/system ] as deploy@47.103.90.59
+ DEBUG [c24d869b] Command: [ -L /home/deploy/news/releases/20190906091552/public/system ]
+ DEBUG [c24d869b] Finished in 0.164 seconds with exit status 1 (failed).
+ DEBUG [9ad53cb4] Running [ -d /home/deploy/news/releases/20190906091552/public/system ] as deploy@47.103.90.59
+ DEBUG [9ad53cb4] Command: [ -d /home/deploy/news/releases/20190906091552/public/system ]
+ DEBUG [9ad53cb4] Finished in 0.162 seconds with exit status 1 (failed).
+  INFO [641ef2dd] Running /usr/bin/env ln -s /home/deploy/news/shared/public/system /home/deploy/news/releases/20190906091552/public/system as deploy@47.103.90.59
+ DEBUG [641ef2dd] Command: /usr/bin/env ln -s /home/deploy/news/shared/public/system /home/deploy/news/releases/20190906091552/public/system
+  INFO [641ef2dd] Finished in 0.166 seconds with exit status 0 (successful).
+ DEBUG [be3aba3d] Running [ -L /home/deploy/news/releases/20190906091552/public/assets ] as deploy@47.103.90.59
+ DEBUG [be3aba3d] Command: [ -L /home/deploy/news/releases/20190906091552/public/assets ]
+ DEBUG [be3aba3d] Finished in 0.174 seconds with exit status 1 (failed).
+ DEBUG [06c048db] Running [ -d /home/deploy/news/releases/20190906091552/public/assets ] as deploy@47.103.90.59
+ DEBUG [06c048db] Command: [ -d /home/deploy/news/releases/20190906091552/public/assets ]
+ DEBUG [06c048db] Finished in 0.189 seconds with exit status 1 (failed).
+  INFO [78513c79] Running /usr/bin/env ln -s /home/deploy/news/shared/public/assets /home/deploy/news/releases/20190906091552/public/assets as deploy@47.103.90.59
+ DEBUG [78513c79] Command: /usr/bin/env ln -s /home/deploy/news/shared/public/assets /home/deploy/news/releases/20190906091552/public/assets
+  INFO [78513c79] Finished in 0.220 seconds with exit status 0 (successful).
+ DEBUG [ec9fcc67] Running if test ! -d /home/deploy/news/releases/20190906091552; then echo "Directory does not exist '/home/deploy/news/releases/20190906091552'" 1>&2; false; fi as deploy@47.103.90.59
+ DEBUG [ec9fcc67] Command: if test ! -d /home/deploy/news/releases/20190906091552; then echo "Directory does not exist '/home/deploy/news/releases/20190906091552'" 1>&2; false; fi
+ DEBUG [ec9fcc67] Finished in 0.187 seconds with exit status 0 (successful).
+ DEBUG [d6c49507] Running ~/.rvm/bin/rvm default do bundle check --path /home/deploy/news/shared/bundle as deploy@47.103.90.59
+ DEBUG [d6c49507] Command: cd /home/deploy/news/releases/20190906091552 && ~/.rvm/bin/rvm default do bundle check --path /home/deploy/news/shared/bundle
+ DEBUG [d6c49507] 	The following gems are missing
+ DEBUG [d6c49507] 	 * net-ssh (5.2.0)
+ DEBUG [d6c49507] 	 * net-scp (2.0.0)
+ DEBUG [d6c49507] 	 * sshkit (1.20.0)
+ DEBUG [d6c49507] 	 * airbrussh (1.3.3)
+ DEBUG [d6c49507] 	 * ansi (1.5.0)
+ DEBUG [d6c49507] 	 * descendants_tracker (0.0.4)
+ DEBUG [d6c49507] 	 * ice_nine (0.11.2)
+ DEBUG [d6c49507] 	 * axiom-types (0.1.1)
+ DEBUG [d6c49507] 	 * capistrano (3.11.0)
+ DEBUG [d6c49507] 	 * capistrano-bundler (1.6.0)
+ DEBUG [d6c49507] 	 * capistrano-passenger (0.2.0)
+ DEBUG [d6c49507] 	 * capistrano-rails (1.4.0)
+ DEBUG [d6c49507] 	 * capistrano-rvm (0.1.2)
+ DEBUG [d6c49507] 	 * coercible (1.0.0)
+ DEBUG [d6c49507] 	 * equalizer (0.0.11)
+ DEBUG [d6c49507] 	 * formatador (0.2.5)
+ DEBUG [d6c49507] 	 * mustermann (1.0.3)
+ DEBUG [d6c49507] 	 * mustermann-grape (1.0.0)
+ DEBUG [d6c49507] 	 * rack-accept (0.4.5)
+ DEBUG [d6c49507] 	 * virtus (1.0.5)
+ DEBUG [d6c49507] 	 * grape (1.2.4)
+ DEBUG [d6c49507] 	 * grape-swagger (0.32.1)
+ DEBUG [d6c49507] 	 * grape-swagger-rails (0.3.1)
+ DEBUG [d6c49507] 	 * listen (3.0.8)
+ DEBUG [d6c49507] 	 * lumberjack (1.0.13)
+ DEBUG [d6c49507] 	 * nenv (0.3.0)
+ DEBUG [d6c49507] 	 * shellany (0.0.1)
+ DEBUG [d6c49507] 	 * notiffany (0.1.3)
+ DEBUG [d6c49507] 	 * guard (2.13.0)
+ DEBUG [d6c49507] 	 * guard-compat (1.2.1)
+ DEBUG [d6c49507] 	 * guard-minitest (2.4.4)
+ DEBUG [d6c49507] 	 * ruby-progressbar (1.10.1)
+ DEBUG [d6c49507] 	 * minitest-reporters (1.1.14)
+ DEBUG [d6c49507] 	 * rails-controller-testing (1.0.2)
+ DEBUG [d6c49507] 	Install missing gems with `bundle install`
+ DEBUG [d6c49507] Finished in 0.902 seconds with exit status 1 (failed).
+  INFO [563f978a] Running ~/.rvm/bin/rvm default do bundle install --path /home/deploy/news/shared/bundle --jobs 4 --without development test --deployment --quiet as deploy@47.103.90.59
+ DEBUG [563f978a] Command: cd /home/deploy/news/releases/20190906091552 && ~/.rvm/bin/rvm default do bundle install --path /home/deploy/news/shared/bundle --jobs 4 --without development test --deployment --quiet
+ DEBUG [563f978a] 	Warning, new version of rvm available '1.29.9', you are using older version '1.29.9-next'.
+ DEBUG [563f978a] 	You can disable this warning with:   echo rvm_autoupdate_flag=0 >> ~/.rvmrc
+ DEBUG [563f978a] 	You can enable auto-update with:     echo rvm_autoupdate_flag=2 >> ~/.rvmrc
+ DEBUG [563f978a] 	You can update manually with:        rvm get VERSION                         (e.g. 'rvm get stable')
+ DEBUG [563f978a] 	
+  INFO [563f978a] Finished in 6.684 seconds with exit status 0 (successful).
+ DEBUG [94efb467] Running if test ! -d /home/deploy/news/releases/20190906091552; then echo "Directory does not exist '/home/deploy/news/releases/20190906091552'" 1>&2; false; fi as deploy@47.103.90.59
+ DEBUG [94efb467] Command: if test ! -d /home/deploy/news/releases/20190906091552; then echo "Directory does not exist '/home/deploy/news/releases/20190906091552'" 1>&2; false; fi
+ DEBUG [94efb467] Finished in 0.167 seconds with exit status 0 (successful).
+  INFO [028a29b6] Running ~/.rvm/bin/rvm default do bundle exec rake assets:precompile as deploy@47.103.90.59
+ DEBUG [028a29b6] Command: cd /home/deploy/news/releases/20190906091552 && ( export RAILS_ENV="production" RAILS_GROUPS="" ; ~/.rvm/bin/rvm default do bundle exec rake assets:precompile )
+ DEBUG [028a29b6] 	[Simple Form] Simple Form is not configured in the application and will use the default values. Use `rails generate simple_form:install` to generate the Simple Form configuration.
+ DEBUG [028a29b6] 	
+ DEBUG [028a29b6] 	Yarn executable was not detected in the system.
+ DEBUG [028a29b6] 	
+ DEBUG [028a29b6] 	Download Yarn at https://yarnpkg.com/en/docs/install
+ DEBUG [028a29b6] 	
+  INFO [028a29b6] Finished in 3.670 seconds with exit status 0 (successful).
+ DEBUG [8625e01d] Running if test ! -d /home/deploy/news/releases/20190906091552; then echo "Directory does not exist '/home/deploy/news/releases/20190906091552'" 1>&2; false; fi as deploy@47.103.90.59
+ DEBUG [8625e01d] Command: if test ! -d /home/deploy/news/releases/20190906091552; then echo "Directory does not exist '/home/deploy/news/releases/20190906091552'" 1>&2; false; fi
+ DEBUG [8625e01d] Finished in 0.160 seconds with exit status 0 (successful).
+  INFO [9805bc4e] Running /usr/bin/env mkdir -p /home/deploy/news/releases/20190906091552/assets_manifest_backup as deploy@47.103.90.59
+ DEBUG [9805bc4e] Command: cd /home/deploy/news/releases/20190906091552 && /usr/bin/env mkdir -p /home/deploy/news/releases/20190906091552/assets_manifest_backup
+  INFO [9805bc4e] Finished in 0.164 seconds with exit status 0 (successful).
+ DEBUG [2e037ee8] Running /usr/bin/env ls /home/deploy/news/releases/20190906091552/public/assets/.sprockets-manifest* as deploy@47.103.90.59
+ DEBUG [2e037ee8] Command: cd /home/deploy/news/releases/20190906091552 && /usr/bin/env ls /home/deploy/news/releases/20190906091552/public/assets/.sprockets-manifest*
+ DEBUG [2e037ee8] 	/home/deploy/news/releases/20190906091552/public/assets/.sprockets-manifest-73698e5d2d5c986affacdcdd8f6e4d34.json
+ DEBUG [2e037ee8] Finished in 0.164 seconds with exit status 0 (successful).
+ DEBUG [269e8d74] Running /usr/bin/env ls /home/deploy/news/releases/20190906091552/public/assets/.sprockets-manifest* as deploy@47.103.90.59
+ DEBUG [269e8d74] Command: cd /home/deploy/news/releases/20190906091552 && /usr/bin/env ls /home/deploy/news/releases/20190906091552/public/assets/.sprockets-manifest*
+ DEBUG [269e8d74] 	/home/deploy/news/releases/20190906091552/public/assets/.sprockets-manifest-73698e5d2d5c986affacdcdd8f6e4d34.json
+ DEBUG [269e8d74] Finished in 0.168 seconds with exit status 0 (successful).
+  INFO [7e421abb] Running /usr/bin/env cp /home/deploy/news/releases/20190906091552/public/assets/.sprockets-manifest-73698e5d2d5c986affacdcdd8f6e4d34.json /home/deploy/news/releases/20190906091552/assets_manifest_backup as deploy@47.103.90.59
+ DEBUG [7e421abb] Command: cd /home/deploy/news/releases/20190906091552 && /usr/bin/env cp /home/deploy/news/releases/20190906091552/public/assets/.sprockets-manifest-73698e5d2d5c986affacdcdd8f6e4d34.json /home/deploy/news/releases/20190906091552/assets_manifest_backup
+  INFO [7e421abb] Finished in 0.167 seconds with exit status 0 (successful).
+  INFO [deploy:migrate] Run `rake db:migrate`
+ DEBUG [cc5d240c] Running if test ! -d /home/deploy/news/releases/20190906091552; then echo "Directory does not exist '/home/deploy/news/releases/20190906091552'" 1>&2; false; fi as deploy@47.103.90.59
+ DEBUG [cc5d240c] Command: if test ! -d /home/deploy/news/releases/20190906091552; then echo "Directory does not exist '/home/deploy/news/releases/20190906091552'" 1>&2; false; fi
+ DEBUG [cc5d240c] Finished in 0.161 seconds with exit status 0 (successful).
+  INFO [54a96c7d] Running ~/.rvm/bin/rvm default do bundle exec rake db:migrate as deploy@47.103.90.59
+ DEBUG [54a96c7d] Command: cd /home/deploy/news/releases/20190906091552 && ( export RAILS_ENV="production" ; ~/.rvm/bin/rvm default do bundle exec rake db:migrate )
+ DEBUG [54a96c7d] 	[Simple Form] Simple Form is not configured in the application and will use the default values. Use `rails generate simple_form:install` to generate the Simple Form configuration.
+ DEBUG [54a96c7d] 	
+  INFO [54a96c7d] Finished in 3.217 seconds with exit status 0 (successful).
+  INFO [da42924c] Running /usr/bin/env ln -s /home/deploy/news/releases/20190906091552 /home/deploy/news/releases/current as deploy@47.103.90.59
+ DEBUG [da42924c] Command: /usr/bin/env ln -s /home/deploy/news/releases/20190906091552 /home/deploy/news/releases/current
+  INFO [da42924c] Finished in 0.164 seconds with exit status 0 (successful).
+  INFO [b9967ba7] Running /usr/bin/env mv /home/deploy/news/releases/current /home/deploy/news as deploy@47.103.90.59
+ DEBUG [b9967ba7] Command: /usr/bin/env mv /home/deploy/news/releases/current /home/deploy/news
+  INFO [b9967ba7] Finished in 0.161 seconds with exit status 0 (successful).
+ DEBUG [bfa177d4] Running if test ! -d /home/deploy/news/releases/20190906091552; then echo "Directory does not exist '/home/deploy/news/releases/20190906091552'" 1>&2; false; fi as deploy@47.103.90.59
+ DEBUG [bfa177d4] Command: if test ! -d /home/deploy/news/releases/20190906091552; then echo "Directory does not exist '/home/deploy/news/releases/20190906091552'" 1>&2; false; fi
+ DEBUG [bfa177d4] Finished in 0.162 seconds with exit status 0 (successful).
+ DEBUG [42ea53e4] Running /usr/bin/env passenger -v as deploy@47.103.90.59
+ DEBUG [42ea53e4] Command: cd /home/deploy/news/releases/20190906091552 && /usr/bin/env passenger -v
+ DEBUG [42ea53e4] 	Phusion Passenger 6.0.2
+ DEBUG [42ea53e4] 	
+ DEBUG [42ea53e4] Finished in 0.242 seconds with exit status 0 (successful).
+  INFO [9de733f9] Running /usr/bin/env passenger-config restart-app /home/deploy/news --ignore-app-not-running as deploy@47.103.90.59
+ DEBUG [9de733f9] Command: cd /home/deploy/news/releases/20190906091552 && /usr/bin/env passenger-config restart-app /home/deploy/news --ignore-app-not-running
+ DEBUG [9de733f9] 	Restarting /home/deploy/news/current (production)
+  INFO [9de733f9] Finished in 0.320 seconds with exit status 0 (successful).
+ DEBUG [f6b30f9c] Running /usr/bin/env ls -x /home/deploy/news/releases as deploy@47.103.90.59
+ DEBUG [f6b30f9c] Command: /usr/bin/env ls -x /home/deploy/news/releases
+ DEBUG [f6b30f9c] 	20190903111008	20190903163343	20190904012343	20190904013355	20190904021408
+20190906091552
+ DEBUG [f6b30f9c] Finished in 0.166 seconds with exit status 0 (successful).
+  INFO Keeping 5 of 6 deployed releases on 47.103.90.59
+ DEBUG [ab7c4875] Running [ -d /home/deploy/news/current ] as deploy@47.103.90.59
+ DEBUG [ab7c4875] Command: [ -d /home/deploy/news/current ]
+ DEBUG [ab7c4875] Finished in 0.163 seconds with exit status 0 (successful).
+ DEBUG [f3461f8a] Running /usr/bin/env readlink /home/deploy/news/current as deploy@47.103.90.59
+ DEBUG [f3461f8a] Command: /usr/bin/env readlink /home/deploy/news/current
+ DEBUG [f3461f8a] 	/home/deploy/news/releases/20190906091552
+ DEBUG [f3461f8a] Finished in 0.164 seconds with exit status 0 (successful).
+  INFO [902f127a] Running /usr/bin/env rm -rf /home/deploy/news/releases/20190903111008 as deploy@47.103.90.59
+ DEBUG [902f127a] Command: /usr/bin/env rm -rf /home/deploy/news/releases/20190903111008
+  INFO [902f127a] Finished in 0.199 seconds with exit status 0 (successful).
+ DEBUG [97d68a34] Running if test ! -d /home/deploy/news/releases; then echo "Directory does not exist '/home/deploy/news/releases'" 1>&2; false; fi as deploy@47.103.90.59
+ DEBUG [97d68a34] Command: if test ! -d /home/deploy/news/releases; then echo "Directory does not exist '/home/deploy/news/releases'" 1>&2; false; fi
+ DEBUG [97d68a34] Finished in 0.166 seconds with exit status 0 (successful).
+  INFO [f6970559] Running /usr/bin/env echo "Branch master (at 6fbbaf18deaf4962de4c1cb66e180c91d0f55b9b) deployed as release 20190906091552 by w" >> /home/deploy/news/revisions.log as deploy@47.103.90.59
+ DEBUG [f6970559] Command: cd /home/deploy/news/releases && /usr/bin/env echo "Branch master (at 6fbbaf18deaf4962de4c1cb66e180c91d0f55b9b) deployed as release 20190906091552 by w" >> /home/deploy/news/revisions.log
+  INFO [f6970559] Finished in 0.163 seconds with exit status 0 (successful).
