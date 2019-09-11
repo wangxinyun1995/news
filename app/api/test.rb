@@ -1,5 +1,4 @@
 require 'grape'
-require 'grape-swagger'
 class Test < Grape::API
 	format :json
 	# 捕获 ActiveRecord::RecordNotFound 异常
