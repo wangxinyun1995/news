@@ -8,4 +8,9 @@ class Ping < Grape::API
 		authenticate_token!
 		{ data: New.where(resource: params['resource']).order("id desc").limit(5) }
   end
+
+	desc 'Pingtest'
+	get :ping do
+		'success!' 
+	end
 end

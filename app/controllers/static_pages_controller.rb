@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
     params['resource'] ||= 'weibo'
-    @news = New.where(resource: params['resource']).limit(50)
+    @news = New.where(resource: params['resource']).order('id desc').limit(51).reverse
   end
 
   def help

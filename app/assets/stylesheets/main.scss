@@ -224,6 +224,13 @@ td, th {
   clear: both;
 }
 
+ .black_color {
+   color: #777777;
+ }
+
+.w20 {
+ width: 20px;
+}
 .fz-11 {
   font-size: 11px;
 }
@@ -344,6 +351,10 @@ td, th {
   margin-left: 0 !important;
 }
 
+.ml-2 {
+  margin-left: 2px !important;
+}
+
 .ml-5 {
   margin-left: 5px !important;
 }
@@ -392,8 +403,16 @@ td, th {
   margin-right: 30px;
 }
 
+.mr-35 {
+  margin-right: 35px;
+}
+
 .mr-50 {
   margin-right: 50px;
+}
+
+.mr-80 {
+  margin-right: 150px;
 }
 
 .mb-0 {
