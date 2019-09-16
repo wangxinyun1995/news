@@ -13,7 +13,13 @@ module News
 
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app')]
-
+    
+    config.time_zone = 'Beijing'
+    config.active_record.default_timezone = :local
+    config.i18n.locale = 'zh-CN'
+    config.i18n.default_locale = 'zh-CN'
+    config.encoding = "utf-8"
+    config.active_support.escape_html_entities_in_json = true
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

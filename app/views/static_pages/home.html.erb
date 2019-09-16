@@ -11,9 +11,9 @@
   <option value="weibo">微博</option>
   <option value="zhihu">知乎</option>
 </select>
-<!-- <div class="">
-每十分钟更新一次
-</div> -->
+<div class="">
+每十分钟更新一次,同步时间: <%= @news.last.created_at %>
+</div>
 <div class="list-group" id="list_resource">
   <div class="list-group-item">
     <span class="mr-20">序号</span>
