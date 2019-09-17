@@ -1,4 +1,16 @@
 class New < ApplicationRecord
+	# 全文检索  searchkick
+	searchkick
+	# only index records per your `search_import` scope above
+	# scope :search_import, -> { where("created_at < ?", Time.now - 1) }
+
+	def search_data
+		{
+			title: title,
+			description: description
+		}
+	end
+
 	def self.snatch_weibo
 		url = 'https://s.weibo.com/top/summary?cate=realtimehot'
 		html_doc = RestClient.get(url)

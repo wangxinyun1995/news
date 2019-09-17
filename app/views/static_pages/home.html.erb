@@ -7,35 +7,12 @@
 
   <%= link_to "立即注册", signup_path, class: "btn btn-lg btn-primary" %>
 </div> -->
-<select name="person[person_type]" style="margin-top: 80px;" id="select_resource" οnchange="select()">
-  <option value="weibo">微博</option>
-  <option value="zhihu">知乎</option>
-</select>
+
+
 <div class="">
 每十分钟更新一次,同步时间: <%= @news.last.created_at %>
 </div>
-<div class="list-group" id="list_resource">
-  <div class="list-group-item">
-    <span class="mr-20">序号</span>
-    <span class="mr-35">来源</span>
-    <span>关键词</span>
-  </div>
-
-  <% @news.each_with_index do |news, index| %>
-    <a href="<%= news.origin_url %>" class="list-group-item " target="_blank">
-      <span class="<%= news.no.to_i > 9 ? "ml-2" : "ml-10" %> mr-20 black_color"><%= news.no.present? ? news.no : 0 %></span>
-      <span class="ml-5 mr-30 black_color"><%= news.resource %></span>
-      <span class="mr-10"><%= news.title %></span>
-      <span class="black_color"><%= news.hot %></span>
-
-      <span class="">
-        <% if news.image_url.present? %>
-          <%= link_to image_tag(news.image_url, width: '200px', height: '200px'), news.image_url  %>
-        <% end %>
-      </span>
-    </a>
-  <% end %>
-</div>
+<%= render 'form' %>
 <script type="text/javascript">
 
 $("#select_resource").change(function(){

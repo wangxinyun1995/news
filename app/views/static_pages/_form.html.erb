@@ -1,0 +1,24 @@
+<div class="list-group" id="list_resource">
+  <div class="list-group-item">
+    <span class="mr-20">序号</span>
+    <span class="mr-35">来源</span>
+    <span>关键词</span>
+  </div>
+
+  <% @news.each_with_index do |news, index| %>
+    <a href="<%= news.origin_url %>" class="list-group-item " target="_blank">
+      <span class="<%= news.no.to_i > 9 ? "ml-2" : "ml-10" %> mr-20 black_color"><%= news.no.present? ? news.no : 0 %></span>
+      <span class="ml-5 mr-30 black_color"><%= news.resource %></span>
+      <span class="mr-10"><%= news.title %></span>
+      <span class="black_color"><%= news.hot %></span>
+
+      <span class="">
+        <%# if news.image_url.present? %>
+					<!-- </br>
+					<img src="<%= news.image_url %>" alt="..." class="img-rounded">
+        <%# end %> -->
+
+      </span>
+    </a>
+  <% end %>
+</div>

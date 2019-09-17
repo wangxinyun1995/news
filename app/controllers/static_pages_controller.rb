@@ -13,4 +13,18 @@ class StaticPagesController < ApplicationController
     render layout: false
   end
 
+  def search
+    conditions = {
+      language: "chinese",
+      misspellings: false,
+      highlight: {tag: "<span class='red'>"},
+      load: false,
+      index_name: [New],
+      page: params[:page],
+      per_page: 20
+    }
+    params[:k] = '*' if params[:k].blank?
+    @news = Searchkick.search "#{params[:k]}", conditions
+  end
+
 end

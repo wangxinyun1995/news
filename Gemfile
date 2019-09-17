@@ -70,3 +70,6 @@ group :development do
   gem 'grape-swagger'
   gem 'grape-swagger-rails'
 end
+
+# elasticsearch
+gem 'searchkick', '1.3.3'
