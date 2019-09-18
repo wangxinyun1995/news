@@ -10,9 +10,9 @@ class New < ApplicationRecord
 	# 		description: description
 	# 	}
 	# end
-	after_save do
-		self.reindex
-	end
+	# after_save do
+	# 	self.reindex
+	# end
 
 	def self.select(resource)
 		begin
