@@ -34,7 +34,7 @@ class New < ApplicationRecord
 			data = row.css('td').map(&:text)
 			next if data.blank?
 			url = 'https://s.weibo.com/' + row.css('.td-02 a').attribute('href').value
-			h = New.find_or_initialize_by(
+			h = New.creat(
 																			 resource: 'weibo',
 																			 no: data[0],
 																			 title: row.css('.td-02 a').text,
@@ -64,7 +64,7 @@ class New < ApplicationRecord
 			next if row.blank?
 			hot = row.css('.HotItem-content .HotItem-metrics').map(&:text).join().chomp("分享")
 			hot = hot.include?('有奖问答') ? '有奖问答' : hot
-			h = New.find_or_initialize_by(resource: 'zhihu',
+			h = New.creat(resource: 'zhihu',
 																		 no: row.css('.HotItem-rank').text,
 																		 title: row.css('.HotItem-content a').attribute('title').value,
 																		 origin_url: row.css('.HotItem-content a').attribute('href').value,
