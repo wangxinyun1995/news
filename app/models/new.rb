@@ -10,6 +10,11 @@ class New < ApplicationRecord
 	# 		description: description
 	# 	}
 	# end
+	after_save do
+		self.reindex
+	end
+
+
 
 	def self.snatch_weibo
 		url = 'https://s.weibo.com/top/summary?cate=realtimehot'
