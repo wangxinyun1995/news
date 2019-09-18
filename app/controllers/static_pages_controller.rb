@@ -9,7 +9,7 @@ class StaticPagesController < ApplicationController
 
   def home_resource
     resource = params['resource']
-    @news = New.where(resource: resource).limit(50)
+    @news = New.where(resource: params['resource']).order('id desc').limit(50).reverse
     render layout: false
   end
 
