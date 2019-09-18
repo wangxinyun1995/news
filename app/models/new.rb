@@ -15,7 +15,6 @@ class New < ApplicationRecord
 	end
 
 
-
 	def self.snatch_weibo
 		url = 'https://s.weibo.com/top/summary?cate=realtimehot'
 		html_doc = RestClient.get(url)
