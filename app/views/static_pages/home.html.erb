@@ -12,7 +12,9 @@
 <div class="">
 每十分钟更新一次,同步时间: <%= @news.last.created_at %>
 </div>
-<%= render 'form' %>
+<div class="mt-2">
+  <%= render 'form' %>
+</div>
 <script type="text/javascript">
 
 $("#select_resource").change(function(){

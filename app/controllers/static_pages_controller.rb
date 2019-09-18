@@ -21,7 +21,7 @@ class StaticPagesController < ApplicationController
       load: false,
       index_name: [New],
       page: params[:page],
-      per_page: 20
+      per_page: 10
     }
     params[:k] = '*' if params[:k].blank?
     @news = Searchkick.search "#{params[:k]}", conditions
