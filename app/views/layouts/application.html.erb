@@ -10,6 +10,13 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
+    <div class="mr-50">
+      <%= form_tag search_path, method: :get, style: "display: inline;float:right;" do %>
+        <% params[:k] = nil if params[:k].present? && params[:k] == "*" %>
+        <%= text_field_tag :k, params[:k], class: 'search_text', placeholder: '请输入搜索词' %>
+        <%= submit_tag '搜索', class: 'search_btn_search'%>
+      <% end %>
+    </div>
     <div class="container">
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
@@ -19,11 +26,6 @@
           <option value="weibo">微博</option>
           <option value="zhihu">知乎</option>
         </select>
-        <%= form_tag search_path, method: :get, style: "display: inline;float:right;" do %>
-          <% params[:k] = nil if params[:k].present? && params[:k] == "*" %>
-          <%= text_field_tag :k, params[:k], class: 'search_text', placeholder: '请输入搜索词' %>
-          <%= submit_tag '站内搜索', class: 'search_btn_search'%>
-        <% end %>
       </div>
       <%= yield %>
       <%= render 'layouts/footer' %>
