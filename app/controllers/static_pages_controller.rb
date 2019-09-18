@@ -9,7 +9,7 @@ class StaticPagesController < ApplicationController
 
   def home_resource
     resource = params['resource']
-    @news = New.where(resource: resource).limit(30)
+    @news = New.where(resource: resource).limit(50)
     render layout: false
   end
 
