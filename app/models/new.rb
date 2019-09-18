@@ -72,7 +72,6 @@ class New < ApplicationRecord
 																		 description: row.css('.HotItem-content a p').text,
 																		 image_url: row.css('a img').present? ? row.css('a img').attribute('src').value : ''
 																	 )
-			next if h.title.blank?
 			h.save
 		end
 	end
