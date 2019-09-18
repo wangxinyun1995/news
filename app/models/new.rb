@@ -14,6 +14,15 @@ class New < ApplicationRecord
 		self.reindex
 	end
 
+	def self.select(resource)
+		begin
+			send("snatch_#{resource}")
+			msg = '抓取成功'
+		rescue Exception => e
+			msg = '抓取失败'
+		end
+		SnatchLog.write_log(msg, resource)
+	end
 
 	def self.snatch_weibo
 		url = 'https://s.weibo.com/top/summary?cate=realtimehot'

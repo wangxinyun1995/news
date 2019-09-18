@@ -17,4 +17,7 @@ every 10.minutes do
   rake "data:sync_data"
 end
 
+every 24.hours do
+  rake "data:sync_resource"
+end
 # Learn more: http://github.com/javan/whenever

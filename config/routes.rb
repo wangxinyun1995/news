@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   resources :users
+  get  '/log',  to: 'static_pages#log'
 
   mount Test => '/api'
   if Rails.env.development?

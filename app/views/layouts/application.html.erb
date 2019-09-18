@@ -21,11 +21,8 @@
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
-      <div class="">
-        <select name="person[person_type]" style="margin-top: 80px;" id="select_resource" οnchange="select()">
-          <option value="weibo">微博</option>
-          <option value="zhihu">知乎</option>
-        </select>
+      <div style="margin-top: 80px;" >
+
       </div>
       <%= yield %>
       <%= render 'layouts/footer' %>

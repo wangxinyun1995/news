@@ -27,4 +27,8 @@ class StaticPagesController < ApplicationController
     @news = Searchkick.search "#{params[:k]}", conditions
   end
 
+  def log
+    @logs = SnatchLog.all.page(params[:page]).per(10)
+  end
+
 end

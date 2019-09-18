@@ -1,0 +1,15 @@
+<div class="list-group" id="list_resource">
+  <div class="list-group-item">
+    <span class="mr-20">序号</span>
+    <span class="mr-35">来源</span>
+    <span>日志</span>
+  </div>
+
+  <% @logs.each_with_index do |log, index| %>
+    <a href="" class="list-group-item " target="_blank">
+      <span class="<%= index +1  > 9 ? "ml-2" : "ml-10" %> mr-20 black_color"><%= index + 1 %></span>
+      <span class="ml-5 mr-30 black_color">抓取<%= log.resource %>第<%= log.no %>次<%= log.log %></span>
+    </a>
+  <% end %>
+</div>
+<%= paginate @logs %>
