@@ -11,6 +11,15 @@ class Ping < Grape::API
 
 	desc 'Pingtest'
 	get :ping do
-		'success!' 
+		'success!'
 	end
+
+	desc 'access'
+	params do
+	 requires 'resource', type: String,  desc: '来源'
+	end
+	get :access_data do
+		{ data: New.where(resource: params['resource']).order("id desc").limit(1) }
+	end
+
 end

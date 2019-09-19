@@ -10,10 +10,11 @@ module News
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
+    config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
 
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app')]
-    
+
     config.time_zone = 'Beijing'
     config.active_record.default_timezone = :local
     config.i18n.locale = 'zh-CN'
