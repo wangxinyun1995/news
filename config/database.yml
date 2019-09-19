@@ -7,7 +7,7 @@ development: &development
   database: lab
   pool: 5
   username: root
-  password: zhangrun
+  password: ''
 
 development:
   <<: *development
