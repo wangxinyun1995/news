@@ -34,18 +34,16 @@ class New < ApplicationRecord
 			data = row.css('td').map(&:text)
 			next if data.blank?
 			url = 'https://s.weibo.com/' + row.css('.td-02 a').attribute('href').value
-			h = New.creat(
-																			 resource: 'weibo',
-																			 no: data[0],
-																			 title: row.css('.td-02 a').text,
-																			 origin_url: url,
-																		 	 hot: row.css('.td-02 span').text,
-																			 description: row.css('.td-03 i').text,
-																			 image_url: row.css('td-02 img').present? ? row.css('td-02 img').attribute('src').value : ''
+			h = New.create(
+									 resource: 'weibo',
+									 no: data[0],
+									 title: row.css('.td-02 a').text,
+									 origin_url: url,
+								 	 hot: row.css('.td-02 span').text,
+									 description: row.css('.td-03 i').text,
+									 image_url: row.css('td-02 img').present? ? row.css('td-02 img').attribute('src').value : ''
 
 			)
-			next if h.title.blank?
-			h.save
 		end
 	end
 
@@ -64,15 +62,14 @@ class New < ApplicationRecord
 			next if row.blank?
 			hot = row.css('.HotItem-content .HotItem-metrics').map(&:text).join().chomp("分享")
 			hot = hot.include?('有奖问答') ? '有奖问答' : hot
-			h = New.creat(resource: 'zhihu',
-																		 no: row.css('.HotItem-rank').text,
-																		 title: row.css('.HotItem-content a').attribute('title').value,
-																		 origin_url: row.css('.HotItem-content a').attribute('href').value,
-																	 	 hot: hot,
-																		 description: row.css('.HotItem-content a p').text,
-																		 image_url: row.css('a img').present? ? row.css('a img').attribute('src').value : ''
-																	 )
-			h.save
+			New.create(resource: 'zhihu',
+							 no: row.css('.HotItem-rank').text,
+							 title: row.css('.HotItem-content a').attribute('title').value,
+							 origin_url: row.css('.HotItem-content a').attribute('href').value,
+						 	 hot: hot,
+							 description: row.css('.HotItem-content a p').text,
+							 image_url: row.css('a img').present? ? row.css('a img').attribute('src').value : ''
+						 )
 		end
 	end
 end
