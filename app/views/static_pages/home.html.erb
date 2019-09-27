@@ -10,7 +10,8 @@
 
 <%= render 'select' %>
 <div class="">
-每十分钟更新一次,同步时间: <%= @news.last.try(:created_at) %>
+每十分钟更新一次,同步时间: <%= @news.last.try(:created_at).strftime("%Y-%m-%d %H:%M:%S") %></br>
+总计: <%= New.all.size %>条数据
 </div>
 <div class="mt-2">
   <%= render 'form' %>
