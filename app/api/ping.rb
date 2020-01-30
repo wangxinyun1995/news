@@ -22,4 +22,12 @@ class Ping < Grape::API
 		{ data: New.where(resource: params['resource']).order("id desc").limit(1) }
 	end
 
+	desc 'hospital_data'
+	# params do
+	#  requires 'resource', type: String,  desc: '来源'
+	# end
+	get :hospital_data do
+		{ data: Hospital.limit(1) }
+	end
+
 end
