@@ -1,0 +1,2 @@
+class PayTotal < ApplicationRecord
+end
