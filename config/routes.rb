@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get  '/log',  to: 'static_pages#log'
 
   mount Test => '/api'
-  if Rails.env.development?
+  if Setting.is_development
     mount GrapeSwaggerRails::Engine => '/apidoc'
   end
 

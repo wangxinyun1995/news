@@ -14,7 +14,7 @@ class Test < Grape::API
 	helpers TestHelpers
  	mount Ping
 	mount Auth
-	if Rails.env.development?
+	if Setting.is_development
     add_swagger_documentation(
       mount_path: 'swagger_doc',
       hide_format: true,
