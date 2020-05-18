@@ -27,9 +27,28 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.perform_caching = false
+  config.action_mailer.perform_caching = true
+  config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address:              'smtp.163.com',
+  #   port:                 "25",
+  #   domain:               '163.com',
+  #   user_name:            'wangxinyun0805@163.com', 
+  #   password:             'ZNTJJLRDHTIFFLXH', 
+  #   authentication:       :plain,
+  #   enable_starttls_auto: true
+  # }
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.163.com',
+    port:                 "25",
+    domain:               '163.com',
+    user_name:            Setting.email_name, 
+    password:             Setting.email_password, 
+    authentication:       :plain,
+    enable_starttls_auto: true
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
