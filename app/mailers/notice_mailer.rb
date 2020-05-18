@@ -1,6 +1,6 @@
 class NoticeMailer < ApplicationMailer
-  def notice_email(email, notice)
-    @notice = 'test_notice'
-    mail(to: email, subject: '测试自动发邮件')
+  def notice_email(addrr, email)
+    @notice = email
+    mail(to: addrr, subject: email.subject)
   end
 end
