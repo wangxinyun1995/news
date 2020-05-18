@@ -2,6 +2,8 @@
 defaults: &defaults
   foo: "Foo"
   bar: 123
+  email_name: 'wangxinyun0805@163.com'
+  email_password: 'ZNTJJLRDHTIFFLXH'
 
 development:
   <<: *defaults
