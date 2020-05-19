@@ -349,6 +349,3 @@ DEPENDENCIES
   turbolinks (= 5.0.1)
   uglifier (= 3.2.0)
   whenever (= 0.9.4)
-
-BUNDLED WITH
-   1.17.3

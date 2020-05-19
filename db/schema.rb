@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200130013458) do
+ActiveRecord::Schema.define(version: 20200518161833) do
 
   create_table "action_mailbox_inbound_emails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.integer "status", default: 0, null: false
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 20200130013458) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "emails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.string "subject"
+    t.string "content"
+    t.datetime "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
@@ -107,6 +115,20 @@ ActiveRecord::Schema.define(version: 20200130013458) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "hot_hospitals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.string "province"
+    t.string "city"
+    t.string "suburb"
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.boolean "fever_clinic", default: true
+    t.boolean "is_specify", default: false
+    t.string "data_source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "houses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name", comment: "楼盘名称"
     t.string "area_name"
@@ -138,6 +160,18 @@ ActiveRecord::Schema.define(version: 20200130013458) do
     t.string "hot"
     t.text "description"
     t.string "image_url"
+    t.index ["resource"], name: "index_news_on_resource"
+  end
+
+  create_table "pay_totals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.string "day"
+    t.decimal "price", precision: 10
+    t.string "where"
+    t.boolean "is_company", default: false
+    t.string "sex", default: "female"
+    t.string "way"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
