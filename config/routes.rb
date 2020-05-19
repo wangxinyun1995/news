@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :users
   get  '/log',  to: 'static_pages#log'
 
-  mount Api::Test => '/api'
+  mount V1::Api => '/api'
   if Setting.use_swagger_doc
     mount GrapeSwaggerRails::Engine => '/apidoc'
   end
