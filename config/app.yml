@@ -4,6 +4,7 @@ defaults: &defaults
   bar: 123
   email_name: 'wangxinyun0805@163.com'
   email_password: 'ZNTJJLRDHTIFFLXH'
+  use_swagger_doc: true
 
 development:
   <<: *defaults
