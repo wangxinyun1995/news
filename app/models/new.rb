@@ -20,7 +20,7 @@ class New < ApplicationRecord
 			msg = '抓取成功'
 		rescue Exception => e
 			msg = "网站抓取#{resource}抓取失败"
-      NoticeMailer.error_email('329414837@qq.com', msg, "#{e.to_s}").deliver_now
+      NoticeMailer.error_email('329414837@qq.com', msg, "#{e.to_s}").deliver_now if Setting.need_error_email
 		end
 		SnatchLog.write_log(msg, resource)
 	end
