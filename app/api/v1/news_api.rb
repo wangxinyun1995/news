@@ -8,7 +8,7 @@ module V1
 			end
 			get :access_data do
 			  authenticate_token!
-				{ data: New.where(resource: params['resource']).order("id desc").limit(5) }
+				{ data: New.where(resource: params['resource']).order("id desc").limit(50) }
 			end
 
 			desc 'Pingtest'
@@ -22,7 +22,7 @@ module V1
 				requires 'resource', type: String,  desc: '来源'
 			end
 			get :access_data_without_token do
-				{ data: New.where(resource: params['resource']).order("id desc").limit(1) }
+				{ data: New.where(resource: params['resource']).order("id desc").limit(50) }
 			end
 		end
 	end
