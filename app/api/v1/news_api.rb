@@ -22,7 +22,7 @@ module V1
 				requires 'resource', type: String,  desc: '来源'
 			end
 			get :access_data_without_token do
-				{ data: New.where(resource: params['resource']).order("id desc").limit(50) }
+				{data: New.where(resource: params['resource']).order("id desc").limit(50) }
 			end
 		end
 	end

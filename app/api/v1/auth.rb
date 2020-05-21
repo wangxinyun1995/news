@@ -3,8 +3,8 @@ module V1
 		resource :auth do
 			desc 'access_token'
 			params do
-				requires :name,  type: String, desc: 'username.'
-				requires :password,  type: String, desc: 'password.'
+				requires :name,  type: String, desc: 'username.测试账号: ceshi'
+				requires :password,  type: String, desc: 'password.测试登录密码: ceshi123456'
 			end
 			post :access_token do
 				authenticate!
