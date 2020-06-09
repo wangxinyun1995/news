@@ -33,7 +33,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.163.com',
-    port:                 "465",
+    port:                  465,
     domain:               '163.com',
     user_name:            Setting.email_name, 
     password:             Setting.email_password, 
