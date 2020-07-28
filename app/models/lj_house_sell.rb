@@ -14,6 +14,9 @@ class LjHouseSell < ApplicationRecord
               {'User-Agent': 'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; en) Presto/2.8.131 Version/11.11'},
               {'User-Agent': 'Opera/9.80 (Windows NT 6.1; U; en) Presto/2.8.131 Version/11.11'}]
     LjHouse.all.find_each do |house|
+      start = Setting.sell_start_bd
+      endd = Setting.sell_end_bd
+      next if house.id < start  || house.id > endd
       house_name = house.lj_house_name
       html_doc = Nokogiri::HTML(RestClient.get(URI.escape("https://cd.lianjia.com/ershoufang/c#{house.lj_house_id}/"), headers=header[rand(header.size)-1]), 'UTF-8')
       total = html_doc.css('.total span').text.to_f
@@ -35,9 +38,10 @@ class LjHouseSell < ApplicationRecord
         table = sell_doc.css('ul.sellListContent').first.css("li")
         table.each_with_index do |row, index|
           info_url = row.css(".title a").attribute('href').value
+          next if LjHouseSell.exists?(info_url: info_url, snatch_day: snatch_day)
           real_total = LjHouseSell.where(lj_house_name: house_name, snatch_day: snatch_day).size
           puts(info_url)
-          puts("页码: #{num}, 序号: #{index + 1}, 链家总共: #{total} ,已抓取: #{real_total}, 小区: #{house_name}")
+          puts("页码: #{num}, 序号: #{index + 1}, 链家总共: #{total} ,已抓取: #{real_total}, 小区: #{house_name}, #{house.id}")
           info = Nokogiri::HTML(RestClient.get(info_url, headers=header[rand(header.size)-1]), 'UTF-8')
           images = {}
           info.css('#thumbnail2 ul li').each do |image|
@@ -50,7 +54,6 @@ class LjHouseSell < ApplicationRecord
           info.css(".introContent .baseattribute").each do |intro_info|
             intro.merge!({intro_info.css('.name').text => intro_info.css('.content').text.strip})
           end
-          next if LjHouseSell.exists?(info_url: info_url, snatch_day: snatch_day)
           property = deal_info[7].text
           if property == '车库'
             floor = content[0].children[1].text
@@ -97,7 +100,7 @@ class LjHouseSell < ApplicationRecord
               images: images,
               snatch_day: snatch_day)
 
-          time = rand(10)
+          time = rand 3..6
           puts(time)
           sleep time
         end
