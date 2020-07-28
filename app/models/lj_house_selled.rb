@@ -7,10 +7,10 @@ class LjHouseSelled < ApplicationRecord
         next if house.id < Setting.xiaoqu_start  || house.id > Setting.xiaoqu_end
         house_name = house.lj_house_name
         begin
-          ip = Setting.ips[rand(Setting.ips.count - 1)]
+          # ip = Setting.ips[rand(Setting.ips.count - 1)]
           url = "https://cd.lianjia.com/chengjiao/c#{house.lj_house_id}/"
           puts("使用url: #{url}")
-          html_total_url = HTTP.headers(header[rand(header.size - 1)]).via(ip['ip'], ip["port"]).get url
+          html_total_url = HTTP.headers(header[rand(header.size - 1)]).get url
         rescue 
           puts("重新访问网页: #{url}")
           Setting.ips -= [ip]
@@ -20,10 +20,10 @@ class LjHouseSelled < ApplicationRecord
         total = html_total.css('.total span').text.to_f
 
         begin
-          ip = Setting.ips[rand(Setting.ips.count - 1)]
+          # ip = Setting.ips[rand(Setting.ips.count - 1)]
           url = "https://cd.lianjia.com/api/listtop?semParams[semResblockId]=#{house.lj_house_id}&semParams[semType]=resblock&semParams[semSource]=chengjiao_xiaoqu"
           puts("使用 url: #{url}")
-          html_doc_url = HTTP.headers(header[rand(header.size - 1)]).via(ip['ip'], ip["port"]).get url
+          html_doc_url = HTTP.headers(header[rand(header.size - 1)]).get url
         rescue
           puts("重新访问网页: #{url}")
           Setting.ips -= [ip]
@@ -46,10 +46,10 @@ class LjHouseSelled < ApplicationRecord
           puts("#{page_url}")
   
           begin
-            ip = Setting.ips[rand(Setting.ips.count - 1)]
+            # ip = Setting.ips[rand(Setting.ips.count - 1)]
             url = page_url
             puts("使用 url: #{url}")
-            sell_doc_url = HTTP.headers(header[rand(header.size - 1)]).via(ip['ip'], ip["port"]).get url
+            sell_doc_url = HTTP.headers(header[rand(header.size - 1)]).get url
    
           rescue
             puts("重新访问网页: #{url}")
@@ -66,10 +66,10 @@ class LjHouseSelled < ApplicationRecord
             puts("页码: #{num}, 序号: #{index + 1}, 链家总共: #{total} ,已抓取: #{real_total}, 小区: #{house_name}, 小区id: #{house.id}")
 
             begin
-              ip = Setting.ips[rand(Setting.ips.count - 1)]
+              # ip = Setting.ips[rand(Setting.ips.count - 1)]
               url = info_url
               puts("使用 url: #{url}")
-              info_doc_url = HTTP.headers(header[rand(header.size - 1)]).via(ip['ip'], ip["port"]).get url
+              info_doc_url = HTTP.headers(header[rand(header.size - 1)]).get url
   
           rescue
               puts("重新访问网页: #{info_url}")
