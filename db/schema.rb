@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200518161833) do
+ActiveRecord::Schema.define(version: 20200721085559) do
 
   create_table "action_mailbox_inbound_emails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.integer "status", default: 0, null: false
@@ -50,6 +50,20 @@ ActiveRecord::Schema.define(version: 20200518161833) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "audit_logs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.string "action", null: false
+    t.integer "user_id"
+    t.integer "record_id"
+    t.string "record_type"
+    t.text "payload"
+    t.text "request"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["action"], name: "index_audit_logs_on_action"
+    t.index ["record_type", "record_id"], name: "index_audit_logs_on_record_type_and_record_id"
+    t.index ["user_id", "action"], name: "index_audit_logs_on_user_id_and_action"
   end
 
   create_table "emails", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
@@ -148,6 +162,158 @@ ActiveRecord::Schema.define(version: 20200518161833) do
     t.index ["name"], name: "index_houses_on_name"
     t.index ["sale_number"], name: "index_houses_on_sale_number"
     t.index ["status"], name: "index_houses_on_status"
+  end
+
+  create_table "lj_house_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.string "lj_house_id"
+    t.string "lj_house_url"
+    t.string "build_year"
+    t.string "build_type"
+    t.string "volume_rate"
+    t.string "greening_rate"
+    t.string "park_num"
+    t.string "park_price"
+    t.string "gas_price"
+    t.string "water_type"
+    t.string "electricity_type"
+    t.string "developer"
+    t.string "property_company"
+    t.string "property_price"
+    t.string "building_num"
+    t.string "tenement_num"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lj_house_selleds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.string "lj_house_name"
+    t.string "info_url"
+    t.string "desc_name"
+    t.date "sell_date"
+    t.decimal "total", precision: 12, scale: 2
+    t.decimal "average_price", precision: 12, scale: 2
+    t.decimal "listing_price", precision: 12, scale: 2
+    t.integer "deal_day"
+    t.integer "price_diff_time"
+    t.integer "daikan"
+    t.integer "star"
+    t.integer "youlan"
+    t.text "images"
+    t.string "room_type"
+    t.string "floor"
+    t.decimal "area", precision: 12, scale: 2
+    t.string "room_structure"
+    t.decimal "inner_area", precision: 12, scale: 2
+    t.string "build_type"
+    t.string "look"
+    t.integer "build_year"
+    t.string "decoration"
+    t.string "build_structure"
+    t.string "property"
+    t.string "heating"
+    t.string "elevator"
+    t.string "is_elevator"
+    t.string "lj_deal_no"
+    t.string "deal_ownership"
+    t.date "listing_time"
+    t.string "room_age"
+    t.string "room_ownership"
+    t.text "deal_record"
+    t.text "intro"
+    t.text "yezhu_intro"
+    t.date "snatch_day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lj_house_selleds_temp", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.integer "lj_house_id"
+    t.string "lj_house_name"
+    t.string "lj_house_selled_url"
+    t.string "snatch_url"
+    t.string "room_desc"
+    t.decimal "size", precision: 10
+    t.string "look"
+    t.string "decoration"
+    t.string "floor"
+    t.string "tags"
+    t.decimal "listing_price", precision: 10
+    t.integer "selled_days"
+    t.datetime "selled_time"
+    t.decimal "selled_price", precision: 10
+    t.decimal "price", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lj_house_sells", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.string "lj_house_name"
+    t.string "info_url"
+    t.string "desc_name"
+    t.decimal "listing_price", precision: 12, scale: 2
+    t.decimal "square_price", precision: 12, scale: 2
+    t.integer "build_year"
+    t.string "lj_house_no"
+    t.string "room_type"
+    t.string "floor"
+    t.decimal "area", precision: 12, scale: 2
+    t.string "room_structure"
+    t.decimal "inner_area", precision: 12, scale: 2
+    t.string "build_type"
+    t.string "look"
+    t.string "build_structure"
+    t.string "decoration"
+    t.string "elevator"
+    t.string "is_elevator"
+    t.date "listing_date"
+    t.string "deal_ownership"
+    t.string "last_deal"
+    t.string "property"
+    t.string "room_year"
+    t.string "room_ownership"
+    t.string "mortgage_info"
+    t.string "deed_image"
+    t.integer "star"
+    t.text "intro"
+    t.text "images"
+    t.date "snatch_day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lj_house_sells_temp", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.integer "lj_house_id"
+    t.string "lj_house_name"
+    t.string "desc_name"
+    t.string "lj_house_info_url"
+    t.string "snatch_url"
+    t.string "room_desc"
+    t.decimal "size", precision: 10
+    t.string "look"
+    t.string "decoration"
+    t.string "floor"
+    t.decimal "listing_price", precision: 10
+    t.decimal "average_price", precision: 10
+    t.date "snatch_day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lj_houses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.string "lj_house_id"
+    t.string "zone_url"
+    t.string "lj_house_url"
+    t.string "lj_house_name"
+    t.string "lj_house_chengjiao_url"
+    t.integer "lj_house_chengjiao_num"
+    t.string "lj_house_zufang_url"
+    t.integer "lj_house_zufang_num"
+    t.integer "month"
+    t.decimal "average_price", precision: 10
+    t.string "lj_house_sell_url"
+    t.integer "lj_house_sell_num"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "news", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
@@ -1247,6 +1413,13 @@ ActiveRecord::Schema.define(version: 20200518161833) do
     t.datetime "activated_at"
     t.boolean "admin", default: false, comment: "是否是管理员"
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "zan_huas", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.string "house_name"
+    t.integer "index"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
