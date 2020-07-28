@@ -22,7 +22,7 @@ class New < ApplicationRecord
 			msg = "网站抓取#{resource}抓取失败"
             NoticeMailer.error_email('329414837@qq.com', msg, "#{e.to_s}").deliver_now if Setting.need_error_email
 		end
-		AuditLog.audit!(:snatch)
+		# AuditLog.audit!(:snatch)
 		# SnatchLog.write_log(msg, resource)
 	end
 
