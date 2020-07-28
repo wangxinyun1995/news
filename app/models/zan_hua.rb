@@ -1,0 +1,2 @@
+class ZanHua < ApplicationRecord
+end

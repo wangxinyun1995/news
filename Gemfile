@@ -71,3 +71,8 @@ gem 'grape-swagger-rails'
 
 # elasticsearch
 gem 'searchkick', '1.3.3'
+
+gem 'parallel'
+gem 'rest-tor'
+
+gem 'http'

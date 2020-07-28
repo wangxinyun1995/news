@@ -6,7 +6,7 @@
 lock "~> 3.11.0"
 
 set :application, "news"
-set :repo_url, "git@github.com:yangfeng199555/news.git"
+set :repo_url, "https://github.com/wangxinyun1995/news"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

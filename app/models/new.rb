@@ -49,6 +49,32 @@ class New < ApplicationRecord
 		end
 	end
 
+	def self.snatch_weibo
+		url = "https://cd.lianjia.com/xiaoqu/pg#{index}/"
+		html_doc = RestClient.get(url)
+		doc = Nokogiri::HTML(html_doc, nil, 'UTF-8')
+		table = doc.css('ul.listContent').first.css("li")
+		table.each do |row|
+			info = row.css('.info .title a')
+			chengjiao = row.css('.houseInfo a').first
+			zufang = row.css('.houseInfo a').last
+			sell = row.css('.xiaoquListItemSellCount a')
+			h = LjhOUSE.create(
+					lj_house_id: row.attribute('data-id').value,
+					lj_house_url: info.attribute('href').text,
+					lj_house_name: info.text,
+					lj_house_chengjiao_url: chengjiao.attribute('href').value,
+					lj_house_chengjiao_num: (chengjiao.text).to_i,
+					lj_house_zufang_url: zufang.attribute('href').value,
+					lj_house_zufang_num: (zufang.text).to_i,
+					month: (row.css('.priceDesc').text)[/\d+/].to_i,
+					average_price: (row.css('.totalPrice span').text).to_f,
+					lj_house_sell_url: sell.attribute('href').value,
+					lj_house_sell_num: (sell.text)[/\d+/].to_i
+			)
+		end
+	end
+
 	def self.snatch_zhihu
 		cookie = Setting.zhihu_cookie
 		url = 'https://www.zhihu.com/hot'
