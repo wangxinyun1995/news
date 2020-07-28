@@ -45,7 +45,7 @@ gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 
 gem 'faker',                   '1.7.3'  # 假数据
 # 分页
-gem 'kaminari', '1.1.1'
+gem 'kaminari', '1.2.1'
 # 工具
 gem 'whenever', '0.9.4', :require => false #定时任务
 gem 'nokogiri',  '1.10.4'
