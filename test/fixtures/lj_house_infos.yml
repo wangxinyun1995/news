@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lj_house_id: MyString
+  lj_house_url: MyString
+  build_year: MyString
+  build_type: MyString
+  volume_rate: MyString
+  greening_rate: MyString
+  park_num: MyString
+  park_price: MyString
+  gas_price: MyString
+  water_type: MyString
+  electricity_type: MyString
+  developer: MyString
+  property_company: MyString
+
+two:
+  lj_house_id: MyString
+  lj_house_url: MyString
+  build_year: MyString
+  build_type: MyString
+  volume_rate: MyString
+  greening_rate: MyString
+  park_num: MyString
+  park_price: MyString
+  gas_price: MyString
+  water_type: MyString
+  electricity_type: MyString
+  developer: MyString
+  property_company: MyString

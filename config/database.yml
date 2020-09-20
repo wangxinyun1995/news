@@ -1,13 +1,13 @@
 development: &development
   adapter: mysql2
   encoding: utf8
-  host: localhost
+  host: 47.103.90.59
 
   reconnect: false
   database: lab
-  pool: 5
+  pool: 50
   username: root
-  password: ''
+  password: zhangrun
 
 development:
   <<: *development

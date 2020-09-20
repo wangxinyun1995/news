@@ -1,11 +1,22 @@
 class LjHouseSelled < ApplicationRecord
   def self.snatch_selled(snatch_day)
-    header = [{'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'}]
-
-    Parallel.each(LjHouse.all, in_threads: Setting.thread_cout) do |house|
-      ActiveRecord::Base.connection_pool.with_connection do
-        next if house.id < Setting.xiaoqu_start  || house.id > Setting.xiaoqu_end
+    header = [{'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'},
+      {'User-Agent': 'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11'},
+      {'User-Agent': 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)'},
+      {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0'},
+      {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/44.0.2403.89 Chrome/44.0.2403.89 Safari/537.36'},
+      {'User-Agent': 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50'},
+      {'User-Agent': 'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50'},
+      {'User-Agent': 'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0'},
+      {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0.1) Gecko/20100101 Firefox/4.0.1'},
+      {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1'},
+      {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11'},
+      {'User-Agent': 'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; en) Presto/2.8.131 Version/11.11'},
+      {'User-Agent': 'Opera/9.80 (Windows NT 6.1; U; en) Presto/2.8.131 Version/11.11'}]
+    LjHouse.all.find_each do |house|
         house_name = house.lj_house_name
+        next if house.id < 15
+        sleep 2.5
         begin
           # ip = Setting.ips[rand(Setting.ips.count - 1)]
           url = "https://cd.lianjia.com/chengjiao/c#{house.lj_house_id}/"
@@ -13,12 +24,11 @@ class LjHouseSelled < ApplicationRecord
           html_total_url = HTTP.headers(header[rand(header.size - 1)]).get url
         rescue 
           puts("重新访问网页: #{url}")
-          Setting.ips -= [ip]
           retry
         end
         html_total = Nokogiri::HTML(html_total_url.to_s, nil, 'UTF-8')
         total = html_total.css('.total span').text.to_f
-
+        sleep 2.5
         begin
           # ip = Setting.ips[rand(Setting.ips.count - 1)]
           url = "https://cd.lianjia.com/api/listtop?semParams[semResblockId]=#{house.lj_house_id}&semParams[semType]=resblock&semParams[semSource]=chengjiao_xiaoqu"
@@ -26,7 +36,6 @@ class LjHouseSelled < ApplicationRecord
           html_doc_url = HTTP.headers(header[rand(header.size - 1)]).get url
         rescue
           puts("重新访问网页: #{url}")
-          Setting.ips -= [ip]
           retry
         end
 
@@ -41,6 +50,7 @@ class LjHouseSelled < ApplicationRecord
         next if total == 0 || total > 10000
         page_nums = (total / 30).ceil
         [*1..page_nums].each do |num|
+          sleep 2.5
           page_url = "https://cd.lianjia.com/chengjiao/pg#{num}ddo21c#{house.lj_house_id}/"
           puts("#{house_name} page_total: #{page_nums}, page: #{num}")
           puts("#{page_url}")
@@ -53,7 +63,7 @@ class LjHouseSelled < ApplicationRecord
    
           rescue
             puts("重新访问网页: #{url}")
-            Setting.ips -= [ip]
+
             retry
           end
 
@@ -61,6 +71,7 @@ class LjHouseSelled < ApplicationRecord
           table = sell_doc.css('ul.listContent').first.css("li")
           table.each_with_index do |row, index|
             info_url = row.css(".title a").attribute('href').value
+            next if LjHouseSelled.exists?(info_url: info_url, snatch_day: snatch_day)
             real_total = LjHouseSelled.where(lj_house_name: house_name, snatch_day: snatch_day).size
             puts(info_url)
             puts("页码: #{num}, 序号: #{index + 1}, 链家总共: #{total} ,已抓取: #{real_total}, 小区: #{house_name}, 小区id: #{house.id}")
@@ -73,7 +84,7 @@ class LjHouseSelled < ApplicationRecord
   
           rescue
               puts("重新访问网页: #{info_url}")
-              Setting.ips -= [ip]
+  
               retry
             end
 
@@ -101,7 +112,6 @@ class LjHouseSelled < ApplicationRecord
               yezhu_intro.merge!({yezhu_info.css('b').text => yezhu_info.css('span').text.strip})
             end
 
-            next if LjHouseSelled.exists?(info_url: info_url, snatch_day: snatch_day)
             self.create!(
                 lj_house_name: house_name,
                 info_url: info_url,
@@ -140,11 +150,10 @@ class LjHouseSelled < ApplicationRecord
                 yezhu_intro: yezhu_intro,
                 snatch_day: snatch_day)
 
-            time = rand 15..30
-            puts("睡眠#{time}秒")
-            sleep time
+            # time = rand 2
+            puts("睡眠2.2秒")
+            sleep 2.5
           end
-        end
       end
     end
 	end

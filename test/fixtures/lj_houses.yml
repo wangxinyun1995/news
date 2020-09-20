@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lj_house_id: MyString
+  lj_house_url: MyString
+  lj_house_name: MyString
+  lj_house_chengjiao_url: MyString
+  lj_house_chengjiao_num: 1
+  lj_house_zufang_url: MyString
+  lj_house_zufang_num: 1
+  month: 1
+  average_price: 9.99
+  lj_house_sell_url: MyString
+  lj_house_sell_num: 1
+
+two:
+  lj_house_id: MyString
+  lj_house_url: MyString
+  lj_house_name: MyString
+  lj_house_chengjiao_url: MyString
+  lj_house_chengjiao_num: 1
+  lj_house_zufang_url: MyString
+  lj_house_zufang_num: 1
+  month: 1
+  average_price: 9.99
+  lj_house_sell_url: MyString
+  lj_house_sell_num: 1
