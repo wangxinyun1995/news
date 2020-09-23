@@ -28,7 +28,9 @@ class StaticPagesController < ApplicationController
   end
 
   def log
-    @logs = SnatchLog.all.page(params[:page]).per(10)
+    @logs = XiGua.all.order("id desc").page(params[:page]).per(10)
+    render :layout => 'xigua'
   end
+  
 
 end

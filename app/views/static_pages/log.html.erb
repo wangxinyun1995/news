@@ -1,16 +1,49 @@
-<div class="list-group" id="list_resource">
-  <div class="list-group-item">
-    <span class="mr-20">序号</span>
-    <span class="mr-35">来源</span>
-    <span>日志</span>
-  </div>
-
-  <% @logs.each_with_index do |log, index| %>
-    <a href="" class="list-group-item " target="_blank">
-      <span class="<%= index +1  > 9 ? "ml-2" : "ml-10" %> mr-20 black_color"><%= show_index(index) %></span>
-      <span class="ml-5 mr-30 black_color">抓取<%= log.resource %>第<%= log.no %>次<%= log.log %></span>
-      <span class="mr-20 black_color"><%= log.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span>
-    </a>
-  <% end %>
-</div>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">序号</th>
+      <th scope="col">名称</th>
+      <th scope="col">西瓜指数</th>
+      <th scope="col">预估活跃粉丝</th>
+      <th scope="col">平均阅读</th>
+      <th scope="col">平均点赞</th>
+      <th scope="col">平均在看</th>
+      <th scope="col">平均留言</th>
+      <th scope="col">推文</th>
+      <th scope="col">日期</th>
+      <th scope="col">标签</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @logs.each_with_index do |log, index| %>
+      <tr>
+        <th scope="row"><%= show_index(index) %></th>
+        <td><%= log.name %></td>
+        <td><%= log.zhishu %></td>
+        <td><%= log.fans %></td>
+        <td><%= log.read %></td>
+        <td><%= log.like %></td>
+        <td><%= log.zaikan %></td>
+        <td><%= log.comments %></td>
+        <td><%= log.articles %></td>
+        <td><%= log.created_at.strftime("%Y-%m-%d") %></td>
+        <td>
+          <% log.tags.each do |tag|%>
+          <div style="margin-top: 2px">
+            <span class="label label-primary"><%= tag %></span>
+          </div>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <%= paginate @logs %>

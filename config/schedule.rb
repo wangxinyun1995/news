@@ -18,9 +18,8 @@ every 10.minutes do
 end
 
 
-# 定时查询昨天wait_pay的订单 未发送成功的 重新发送
-every 1.day, :at => ['09:10 am','19:30 pm'] do
-  rake "data:send_email"
+every 1.day, :at => ['10:10 am'] do
+  rake "data:sync_xigua_data"
 end
 
 # Learn more: http://github.com/javan/whenever
