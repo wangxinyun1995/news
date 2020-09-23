@@ -22,6 +22,7 @@ namespace :data do
     Email.create!(subject: "#{Time.now.strftime("%Y%m%d")}西瓜数据已获取，请点击网址查看!", content: "今日西瓜数据，请点击网址查看!", time: Time.now)
     Email.in_time.find_each do |email|
       NoticeMailer.notice_email('329414837@qq.com', email).deliver_now
+      NoticeMailer.notice_email('1161007641@qq.com', email).deliver_now
     end
   end
   
