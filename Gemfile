@@ -49,7 +49,7 @@ gem 'kaminari', '1.1.1'
 # 工具
 gem 'whenever', '0.9.4', :require => false #定时任务
 gem 'nokogiri',  '1.10.4'
-gem 'mechanize', '2.7.3'
+gem 'mechanize', '2.7.7'
 
 gem 'simple_form', '~> 4.1'
 
