@@ -48,7 +48,7 @@ gem 'faker',                   '1.7.3'  # 假数据
 gem 'kaminari', '1.1.1'
 # 工具
 gem 'whenever', '0.9.4', :require => false #定时任务
-gem 'nokogiri',  '1.10.4'
+gem 'nokogiri',  '1.13.9'
 gem 'mechanize', '2.7.3'
 
 gem 'simple_form', '~> 4.1'
